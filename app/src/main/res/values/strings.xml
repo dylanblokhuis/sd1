@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Medewerker van de maand</string>
+    <string name="tab_text_1">Info</string>
+    <string name="tab_text_2">Overzicht</string>
+</resources>
