@@ -2,4 +2,11 @@
     <string name="app_name">Medewerker van de maand</string>
     <string name="tab_text_1">Info</string>
     <string name="tab_text_2">Overzicht</string>
+    <string name="camera_dialog_title">Nieuwe foto vanuit:</string>
+    <string name="camera_dialog_library">Bibliotheek</string>
+    <string name="camera_dialog_camera">Camera</string>
+    <string name="camera_dialog_cancel">Sluiten</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
