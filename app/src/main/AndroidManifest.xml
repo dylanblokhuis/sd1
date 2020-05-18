@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         package="com.novi.sd1">
+    <uses-feature android:name="android.hardware.camera"
+            android:required="true" />
+    <uses-feature
+            android:name="android.hardware.camera.any"
+            android:required="true" />
+    <uses-feature
+            android:name="android.hardware.camera.autofocus"
+            android:required="false" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+
 
     <application
             android:allowBackup="true"
@@ -9,7 +22,17 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".CameraActivity"></activity>
+        <provider
+                android:name="androidx.core.content.FileProvider"
+                android:authorities="com.novi.sd1"
+                android:grantUriPermissions="true"
+                android:exported="false">
+            <meta-data
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/filepaths" />
+        </provider>
+
+        <activity android:name=".EditingActivity" />
         <activity
                 android:name=".MainActivity"
                 android:label="@string/app_name"
