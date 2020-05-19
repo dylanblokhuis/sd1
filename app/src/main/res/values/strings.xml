@@ -1,12 +1,23 @@
 <resources>
-    <string name="app_name">Medewerker van de maand</string>
+    <string name="app_name">Employee of the month</string>
+    <string name="add_text">Add</string>
     <string name="tab_text_1">Info</string>
-    <string name="tab_text_2">Overzicht</string>
-    <string name="camera_dialog_title">Nieuwe foto vanuit:</string>
-    <string name="camera_dialog_library">Bibliotheek</string>
+    <string name="tab_text_2">Overview</string>
+    <string name="camera_dialog_title">New picture from:</string>
+    <string name="camera_dialog_library">Gallery</string>
     <string name="camera_dialog_camera">Camera</string>
-    <string name="camera_dialog_cancel">Sluiten</string>
+    <string name="camera_dialog_files">File</string>
+    <string name="camera_dialog_cancel">Close</string>
+    <string name="camera_dialog_file_title">Choose picture from files</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_dialog_default">Novi employee of the month %1$s</string>
+    
+    <string-array name="text_colors">
+        <item>#FFFFFF</item>
+        <item>#000000</item>
+        <item>#FF4A3D</item>
+        <item>#0EE4FF</item>
+    </string-array>
+    <string name="add_text_button">Text</string>
+    <string name="add_gadget_button">Gadget</string>
 </resources>

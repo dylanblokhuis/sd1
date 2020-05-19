@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.provider.OpenableColumns;
 import android.view.View;
 import android.widget.Button;
 
@@ -21,13 +22,16 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.novi.sd1.fragments.CameraDialog;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_IMAGE_CAPTURE = 0;
     private static final int REQUEST_IMAGE_LIBRARY = 1;
+    private static final int REQUEST_IMAGE_FILES = 2;
     private String currentPhotoPath;
 
     @Override
@@ -72,30 +76,44 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void pickPictureFromLibrary() {
+    private void pickPictureFromGallery() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_IMAGE_LIBRARY);
-            pickPictureFromLibrary();
+            pickPictureFromGallery();
         } else {
-            Intent galleryIntent = new Intent(Intent.ACTION_PICK,
-                    android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            Intent galleryIntent = new Intent();
+            galleryIntent.setType("image/*");
+            galleryIntent.setAction(Intent.ACTION_PICK);
 
             if (galleryIntent.resolveActivity(getPackageManager()) != null) {
-                File photoFile = null;
-                try {
-                    photoFile = createImageFile();
-                } catch (IOException ex) {
-                    // Error occurred while creating the File
-                    ex.printStackTrace();
-                }
-                // Continue only if the File was successfully created
-                if (photoFile != null) {
-                    Uri photoURI = FileProvider.getUriForFile(this,
-                            getPackageName(),
-                            photoFile);
-                    galleryIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-                    startActivityForResult(galleryIntent, REQUEST_IMAGE_LIBRARY);
-                }
+                startActivityForResult(galleryIntent, REQUEST_IMAGE_LIBRARY);
+            }
+        }
+    }
+
+    private void pickPictureFromFiles() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_IMAGE_LIBRARY);
+            pickPictureFromFiles();
+        } else {
+            Intent intent = new Intent();
+            intent.setType("image/*");
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+
+            File photoFile = null;
+            try {
+                photoFile = createImageFile();
+            } catch (IOException ex) {
+                // Error occurred while creating the File
+                ex.printStackTrace();
+            }
+            // Continue only if the File was successfully created
+            if (photoFile != null) {
+                Uri photoURI = FileProvider.getUriForFile(this,
+                        getPackageName(),
+                        photoFile);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                startActivityForResult(intent, REQUEST_IMAGE_FILES);
             }
         }
     }
@@ -106,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button libraryButton = dialog.getLibraryButton();
         Button cameraButton = dialog.getCameraButton();
+        Button fileButton = dialog.getFileButton();
 
         cameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,11 +132,16 @@ public class MainActivity extends AppCompatActivity {
                 takePicture();
             }
         });
-
         libraryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pickPictureFromLibrary();
+                pickPictureFromGallery();
+            }
+        });
+        fileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickPictureFromFiles();
             }
         });
     }
@@ -128,23 +152,30 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode) {
             case REQUEST_IMAGE_CAPTURE:
                 if (resultCode == RESULT_OK) {
-                    System.out.println(currentPhotoPath);
                     final Intent intent = new Intent(this, EditingActivity.class);
                     intent.putExtra("URI", currentPhotoPath);
                     startActivity(intent);
                 }
                 break;
             case REQUEST_IMAGE_LIBRARY:
-                if (resultCode == RESULT_OK) {
+                if (resultCode == RESULT_OK && data != null) {
                     Uri selectedImageUri = data.getData();
                     String path = getPath(selectedImageUri);
-                    System.out.println(path);
                     final Intent intent = new Intent(this, EditingActivity.class);
                     intent.putExtra("URI", path);
                     startActivity(intent);
-//                    final Intent intent = new Intent(this, EditingActivity.class);
-//                    intent.putExtra("URI", imageUri.toString());
-//                    startActivity(intent);
+                }
+                break;
+            case REQUEST_IMAGE_FILES:
+                if (resultCode == RESULT_OK && data != null) {
+                    System.out.println(data.getData());
+                    Uri selectedImageUri = data.getData();
+//                    System.out.println(getFileName(selectedImageUri));
+//                    String path = getRealPathFromURI(selectedImageUri);
+//                    System.out.println("path: " + path);
+                    final Intent intent = new Intent(this, EditingActivity.class);
+                    intent.putExtra("URI", currentPhotoPath);
+                    startActivity(intent);
                 }
                 break;
         }
