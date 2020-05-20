@@ -8,9 +8,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.provider.OpenableColumns;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.GridView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,13 +20,13 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.novi.sd1.adapters.ImageListAdapter;
 import com.novi.sd1.fragments.CameraDialog;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,12 +39,38 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        loadPictures();
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 cameraDialog();
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadPictures();
+    }
+
+    private void loadPictures() {
+        final GridView photoGrid = findViewById(R.id.photo_grid);
+        File[] files = getExternalFilesDir(Environment.DIRECTORY_PICTURES + "/edited").listFiles();
+        final ArrayList<String> paths = new ArrayList<>();
+
+        for (File file : files) {
+            paths.add(file.getAbsolutePath());
+        }
+
+        photoGrid.setAdapter(new ImageListAdapter(this, paths));
+        photoGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView parent, View view, int position, long id) {
+                String path = paths.get(position);
+                System.out.println(path);
             }
         });
     }

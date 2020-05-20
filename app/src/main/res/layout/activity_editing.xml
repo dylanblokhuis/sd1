@@ -17,7 +17,7 @@
 
     <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="62dp"
             android:layout_marginTop="15dp"
             android:orientation="horizontal"
             android:paddingLeft="15dp"
@@ -36,5 +36,26 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/add_gadget_button" />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+        <Button
+                android:id="@+id/save_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:text="@string/save_button"
+                android:textColor="#FFFFFF" />
     </LinearLayout>
 </LinearLayout>

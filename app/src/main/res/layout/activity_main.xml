@@ -23,11 +23,12 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.viewpager.widget.ViewPager
-            android:id="@+id/view_pager"
+    <GridView
+            android:id="@+id/photo_grid"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            android:layout_marginTop="@dimen/appbar_margin_correction"
+            android:numColumns="4" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
@@ -37,4 +38,5 @@
             android:layout_margin="@dimen/fab_margin"
             app:maxImageSize="30dp"
             app:srcCompat="@drawable/ic_plus" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

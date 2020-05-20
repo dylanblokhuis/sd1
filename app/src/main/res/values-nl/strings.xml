@@ -13,4 +13,6 @@
     <string name="add_text">Toevoegen</string>
     <string name="add_text_button">Tekst</string>
     <string name="add_gadget_button">Gadget</string>
+    <string name="save_button">Opslaan</string>
+    <string name="common_error_message">Er is iets misgegaan! :(</string>
 </resources>

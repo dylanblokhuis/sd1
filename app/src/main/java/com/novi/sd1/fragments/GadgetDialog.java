@@ -2,21 +2,15 @@ package com.novi.sd1.fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.graphics.Color;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.GridView;
 
-import com.google.android.flexbox.FlexboxLayout;
 import com.novi.sd1.EditingActivity;
 import com.novi.sd1.R;
+import com.novi.sd1.adapters.EmojiListAdapter;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
 
 import ja.burhanrashid52.photoeditor.PhotoEditor;
 
@@ -29,28 +23,22 @@ public class GadgetDialog {
         setDialog(builder.create());
         getDialog().show();
 
+        final GridView gadgetGrid = getDialog().findViewById(R.id.gadget_layout);
+
         if (this.getDialog().getWindow() != null) {
-            FlexboxLayout flexboxLayout = getDialog().findViewById(R.id.gadget_layout);
-            ArrayList<String> emojis = PhotoEditor.getEmojis(activity);
-
-            for (final String emoji : emojis) {
-                TextView emojiText = new TextView(activity);
-                emojiText.setTextSize(30);
-                emojiText.setText(emoji);
-                emojiText.setTextColor(Color.parseColor("#FFFFFF"));
-                emojiText.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        activity.getmPhotoEditor().addEmoji(emoji);
-                        getDialog().cancel();
-                    }
-                });
-
-                flexboxLayout.addView(emojiText);
-            }
-
             // make the window of the dialog transparent
             this.getDialog().getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
+            // fill an adapter with a big list of emojis
+            final ArrayList<String> emojis = PhotoEditor.getEmojis(activity);
+            gadgetGrid.setAdapter(new EmojiListAdapter(getDialog().getContext(), emojis));
+            gadgetGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView parent, View view, int position, long id) {
+                    activity.getmPhotoEditor().addEmoji(emojis.get(position));
+                    getDialog().cancel();
+                }
+            });
         }
     }
 
