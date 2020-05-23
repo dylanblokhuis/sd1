@@ -80,6 +80,7 @@ public class DetailActivity extends AppCompatActivity {
         if (deleted) {
             Intent mainActivityIntent = new Intent(DetailActivity.this, MainActivity.class);
             startActivity(mainActivityIntent);
+            finish();
         } else {
             Toast.makeText(DetailActivity.this, getResources().getString(R.string.common_error_message), Toast.LENGTH_SHORT).show();
         }
