@@ -93,8 +93,8 @@ public class EditingActivity extends AppCompatActivity {
                 public void onSuccess(@NonNull String imagePath) {
                     Log.e("PhotoEditor","Image Saved Successfully");
 
-                    Intent k = new Intent(EditingActivity.this, MainActivity.class);
-                    startActivity(k);
+                    Intent mainActivityIntent = new Intent(EditingActivity.this, MainActivity.class);
+                    startActivity(mainActivityIntent);
                 }
 
                 @Override

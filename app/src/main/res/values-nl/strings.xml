@@ -15,4 +15,10 @@
     <string name="add_gadget_button">Gadget</string>
     <string name="save_button">Opslaan</string>
     <string name="common_error_message">Er is iets misgegaan! :(</string>
+    <string name="delete">Verwijderen</string>
+    <string name="share">Delen</string>
+    <string name="share_with">Deel met</string>
+    <string name="share_body">Bekijk de nieuwe medewerker van de maand!</string>
+    <string name="dialog_delete_title">Doorgaan?</string>
+    <string name="dialog_delete_body">Weet je het zeker dat je deze foto wilt verwijderen?</string>
 </resources>

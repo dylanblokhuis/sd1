@@ -38,7 +38,6 @@ public class ImageListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        System.out.println("here");
         ImageView imageView = new ImageView(context);
         Glide
             .with(context)

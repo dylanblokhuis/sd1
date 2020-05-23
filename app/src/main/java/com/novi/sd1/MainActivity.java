@@ -70,7 +70,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView parent, View view, int position, long id) {
                 String path = paths.get(position);
-                System.out.println(path);
+
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                intent.putExtra("path", path);
+                startActivity(intent);
             }
         });
     }
