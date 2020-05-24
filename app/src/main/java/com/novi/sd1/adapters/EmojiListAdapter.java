@@ -11,6 +11,11 @@ import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 
+/**
+ * @author Dylan Blokhuis
+ * @date 20-5-2020
+ * Leerlijn: Software Development Praktijk 1
+ */
 public class EmojiListAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<String> emojis;

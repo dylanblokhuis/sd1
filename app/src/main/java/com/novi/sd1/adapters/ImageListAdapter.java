@@ -12,6 +12,11 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+/**
+ * @author Dylan Blokhuis
+ * @date 20-5-2020
+ * Leerlijn: Software Development Praktijk 1
+ */
 public class ImageListAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<String> imagePaths;

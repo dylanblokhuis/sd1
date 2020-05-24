@@ -3,13 +3,10 @@ package com.novi.sd1.fragments;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.graphics.Color;
-import android.os.Build;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-
-import androidx.annotation.RequiresApi;
 
 import com.novi.sd1.EditingActivity;
 import com.novi.sd1.R;
@@ -20,6 +17,11 @@ import java.util.Locale;
 
 import ja.burhanrashid52.photoeditor.PhotoEditor;
 
+/**
+ * @author Dylan Blokhuis
+ * @date 18-5-2020
+ * Leerlijn: Software Development Praktijk 1
+ */
 public class TextDialog {
     private Dialog dialog;
     private int textColor = Color.parseColor("#FFFFFF");

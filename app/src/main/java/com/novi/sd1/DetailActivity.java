@@ -18,6 +18,11 @@ import com.bumptech.glide.Glide;
 
 import java.io.File;
 
+/**
+ * @author Dylan Blokhuis
+ * @date 23-5-2020
+ * Leerlijn: Software Development Praktijk 1
+ */
 public class DetailActivity extends AppCompatActivity {
     private String path;
 

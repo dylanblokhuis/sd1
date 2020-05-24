@@ -9,6 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.novi.sd1.R;
 
+/**
+ * @author Dylan Blokhuis
+ * @date 14-4-2020
+ * Leerlijn: Software Development Praktijk 1
+ */
 public class CameraDialog {
     private Dialog builder;
     private Button libraryButton;

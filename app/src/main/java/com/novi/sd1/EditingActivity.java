@@ -25,6 +25,11 @@ import java.util.Date;
 import ja.burhanrashid52.photoeditor.PhotoEditor;
 import ja.burhanrashid52.photoeditor.PhotoEditorView;
 
+/**
+ * @author Dylan Blokhuis
+ * @date 15-4-2020
+ * Leerlijn: Software Development Praktijk 1
+ */
 public class EditingActivity extends AppCompatActivity {
     private PhotoEditor mPhotoEditor;
 

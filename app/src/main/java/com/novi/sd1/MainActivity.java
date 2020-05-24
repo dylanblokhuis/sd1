@@ -29,10 +29,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * @author Dylan Blokhuis
+ * @date 5-3-2020
+ * Leerlijn: Software Development Praktijk 1
+ */
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_IMAGE_CAPTURE = 0;
     private static final int REQUEST_IMAGE_LIBRARY = 1;
-    private static final int REQUEST_IMAGE_FILES = 2;
     private String currentPhotoPath;
 
     @Override

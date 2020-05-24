@@ -14,6 +14,11 @@ import java.util.ArrayList;
 
 import ja.burhanrashid52.photoeditor.PhotoEditor;
 
+/**
+ * @author Dylan Blokhuis
+ * @date 19-5-2020
+ * Leerlijn: Software Development Praktijk 1
+ */
 public class GadgetDialog {
     private Dialog dialog;
 
