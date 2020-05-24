@@ -6,9 +6,7 @@
     <string name="camera_dialog_title">Nieuwe foto vanuit:</string>
     <string name="camera_dialog_library">Galerij</string>
     <string name="camera_dialog_camera">Camera</string>
-    <string name="camera_dialog_files">Bestand</string>
     <string name="camera_dialog_cancel">Sluiten</string>
-    <string name="camera_dialog_file_title">Kies een foto vanuit bestanden</string>
     <string name="text_dialog_default">Novi medewerker van de maand %1$s</string>
     <string name="add_text">Toevoegen</string>
     <string name="add_text_button">Tekst</string>

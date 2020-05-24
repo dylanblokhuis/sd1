@@ -13,7 +13,6 @@ public class CameraDialog {
     private Dialog builder;
     private Button libraryButton;
     private Button cameraButton;
-    private Button fileButton;
 
     public CameraDialog(AppCompatActivity activity) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
@@ -33,7 +32,6 @@ public class CameraDialog {
 
         this.libraryButton = this.builder.findViewById(R.id.library_button);
         this.cameraButton = this.builder.findViewById(R.id.camera_button);
-        this.fileButton = this.builder.findViewById(R.id.file_button);
     }
 
     public Button getLibraryButton() {
@@ -42,9 +40,5 @@ public class CameraDialog {
 
     public Button getCameraButton() {
         return cameraButton;
-    }
-
-    public Button getFileButton() {
-        return fileButton;
     }
 }

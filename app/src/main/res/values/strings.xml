@@ -6,9 +6,7 @@
     <string name="camera_dialog_title">New picture from:</string>
     <string name="camera_dialog_library">Gallery</string>
     <string name="camera_dialog_camera">Camera</string>
-    <string name="camera_dialog_files">File</string>
     <string name="camera_dialog_cancel">Close</string>
-    <string name="camera_dialog_file_title">Choose picture from files</string>
     <string name="delete">Delete</string>
     <string name="share">Share</string>
     <string name="share_with">Share with</string>

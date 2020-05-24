@@ -121,40 +121,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void pickPictureFromFiles() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_IMAGE_LIBRARY);
-            pickPictureFromFiles();
-        } else {
-            Intent intent = new Intent();
-            intent.setType("image/*");
-            intent.setAction(Intent.ACTION_GET_CONTENT);
-
-            File photoFile = null;
-            try {
-                photoFile = createImageFile();
-            } catch (IOException ex) {
-                // Error occurred while creating the File
-                ex.printStackTrace();
-            }
-            // Continue only if the File was successfully created
-            if (photoFile != null) {
-                Uri photoURI = FileProvider.getUriForFile(this,
-                        getPackageName(),
-                        photoFile);
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-                startActivityForResult(intent, REQUEST_IMAGE_FILES);
-            }
-        }
-    }
-
     private void cameraDialog() {
         CameraDialog dialog = new CameraDialog(this);
         dialog.show();
 
         Button libraryButton = dialog.getLibraryButton();
         Button cameraButton = dialog.getCameraButton();
-        Button fileButton = dialog.getFileButton();
 
         cameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,12 +138,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 pickPictureFromGallery();
-            }
-        });
-        fileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pickPictureFromFiles();
             }
         });
     }
@@ -193,18 +159,6 @@ public class MainActivity extends AppCompatActivity {
                     String path = getPath(selectedImageUri);
                     final Intent intent = new Intent(this, EditingActivity.class);
                     intent.putExtra("URI", path);
-                    startActivity(intent);
-                }
-                break;
-            case REQUEST_IMAGE_FILES:
-                if (resultCode == RESULT_OK && data != null) {
-                    System.out.println(data.getData());
-                    Uri selectedImageUri = data.getData();
-//                    System.out.println(getFileName(selectedImageUri));
-//                    String path = getRealPathFromURI(selectedImageUri);
-//                    System.out.println("path: " + path);
-                    final Intent intent = new Intent(this, EditingActivity.class);
-                    intent.putExtra("URI", currentPhotoPath);
                     startActivity(intent);
                 }
                 break;
@@ -239,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
         // try to retrieve the image from the media store first
         // this will only work for images selected from gallery
         String[] projection = { MediaStore.Images.Media.DATA };
+
         Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
         if( cursor != null ){
             int column_index = cursor

@@ -21,20 +21,10 @@
             android:id="@+id/camera_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="15dp"
             android:layout_weight="1"
             android:autoText="false"
             android:background="@color/colorAccent"
             android:text="@string/camera_dialog_camera"
             android:textColor="#fff" />
-
-    <Button
-            android:id="@+id/file_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/colorAccent"
-            android:text="@string/camera_dialog_files"
-            android:textColor="#FFFFFF" />
 
 </LinearLayout>
