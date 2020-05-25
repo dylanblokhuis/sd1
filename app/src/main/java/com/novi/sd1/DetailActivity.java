@@ -72,7 +72,8 @@ public class DetailActivity extends AppCompatActivity {
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 deleteCurrentPhoto();
-                            }})
+                            }
+                        })
                         .setNegativeButton(android.R.string.no, null).show();
             }
         });
