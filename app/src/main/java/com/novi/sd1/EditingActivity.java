@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -52,10 +51,6 @@ public class EditingActivity extends AppCompatActivity {
                         .build();
 
                 addButtonListeners();
-
-//                mPhotoEditor.addText(inputText, colorCode);
-
-//                mPhotoEditor.setBrushDrawingMode(true);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -96,8 +91,6 @@ public class EditingActivity extends AppCompatActivity {
             getmPhotoEditor().saveAsFile(path, new PhotoEditor.OnSaveListener() {
                 @Override
                 public void onSuccess(@NonNull String imagePath) {
-                    Log.e("PhotoEditor","Image Saved Successfully");
-
                     Intent mainActivityIntent = new Intent(EditingActivity.this, MainActivity.class);
                     startActivity(mainActivityIntent);
                 }
