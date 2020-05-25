@@ -12,7 +12,7 @@
     <ImageView
             android:id="@+id/selected_image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="411dp"
             android:layout_marginBottom="10dp"
             android:maxHeight="573dp" />
 
