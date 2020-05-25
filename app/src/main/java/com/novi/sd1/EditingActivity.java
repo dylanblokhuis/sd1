@@ -40,20 +40,20 @@ public class EditingActivity extends AppCompatActivity {
         String path = getIntent().getStringExtra("URI");
         if (path != null) {
             File file = new File(path);
+            Bitmap bitmap = null;
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), Uri.fromFile(file));
-                PhotoEditorView mPhotoEditorView = findViewById(R.id.photoEditorView);
-
-                mPhotoEditorView.getSource().setImageBitmap(bitmap);
-
-                mPhotoEditor = new PhotoEditor.Builder(this, mPhotoEditorView)
-                        .setPinchTextScalable(true)
-                        .build();
-
-                addButtonListeners();
+                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), Uri.fromFile(file));
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+            PhotoEditorView mPhotoEditorView = findViewById(R.id.photoEditorView);
+            mPhotoEditorView.getSource().setImageBitmap(bitmap);
+            mPhotoEditor = new PhotoEditor.Builder(this, mPhotoEditorView)
+                .setPinchTextScalable(true)
+                .build();
+
+            addButtonListeners();
         }
     }
 
