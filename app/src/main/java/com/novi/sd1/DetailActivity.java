@@ -48,9 +48,9 @@ public class DetailActivity extends AppCompatActivity {
                 File file = new File(getPath());
 
                 Uri photoURI = FileProvider.getUriForFile(
-                        DetailActivity.this,
-                        getPackageName(),
-                        file
+                    DetailActivity.this,
+                    getPackageName(),
+                    file
                 );
 
                 Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
@@ -66,15 +66,15 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new AlertDialog.Builder(DetailActivity.this)
-                        .setTitle(getResources().getString(R.string.dialog_delete_title))
-                        .setMessage(getResources().getString(R.string.dialog_delete_body))
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int whichButton) {
-                                deleteCurrentPhoto();
-                            }
-                        })
-                        .setNegativeButton(android.R.string.no, null).show();
+                    .setTitle(getResources().getString(R.string.dialog_delete_title))
+                    .setMessage(getResources().getString(R.string.dialog_delete_body))
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            deleteCurrentPhoto();
+                        }
+                    })
+                    .setNegativeButton(android.R.string.no, null).show();
             }
         });
     }
