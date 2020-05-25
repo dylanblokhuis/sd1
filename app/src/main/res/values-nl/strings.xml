@@ -19,4 +19,5 @@
     <string name="share_body">Bekijk de nieuwe medewerker van de maand!</string>
     <string name="dialog_delete_title">Doorgaan?</string>
     <string name="dialog_delete_body">Weet je het zeker dat je deze foto wilt verwijderen?</string>
+    <string name="file_loading_error">Deze foto kan niet worden geladen.</string>
 </resources>

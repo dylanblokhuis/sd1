@@ -44,6 +44,7 @@ public class EditingActivity extends AppCompatActivity {
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), Uri.fromFile(file));
             } catch (IOException e) {
+                Toast.makeText(EditingActivity.this, getResources().getString(R.string.file_loading_error), Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
 
